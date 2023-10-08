@@ -1,0 +1,29 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: codemonkeybank-ingress
+  namespace: cmb
+  annotations:
+    kubernetes.io/ingress.class: "nginx"
+spec:
+  rules:
+    - host: codemonkeybank.mydomain.tld
+      http:
+        paths:
+        - path: /
+          pathType: Prefix
+          backend:
+            service:
+              name: codemonkeybank-service
+              port:
+                number: 80
+    - host: mongo-express.mydomain.tld
+      http:
+        paths:
+        - path: /
+          pathType: Prefix
+          backend:
+            service:
+              name: mongo-express-service
+              port:
+                number: 8081
