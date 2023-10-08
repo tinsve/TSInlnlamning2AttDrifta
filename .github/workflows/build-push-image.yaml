@@ -41,7 +41,8 @@ jobs:
     - name: Commit and push updated manifests
       run: |
         git config --global user.name "GitHub Actions"
-        git config --global user.email "github-actions@github.com"
+        git config --global user.email "github-actions@github.com"        
+        git add CodeMonkeyBank-K8S-Manifests/ingress.yaml
         git add CodeMonkeyBank-K8S-Manifests/codemonkeybank-deployment.yaml
         git commit -m "Update webapp image to ${{ github.sha }}"
         git push
