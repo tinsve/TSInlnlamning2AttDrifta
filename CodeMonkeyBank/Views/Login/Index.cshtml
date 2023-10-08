@@ -1,0 +1,87 @@
+﻿@{
+    ViewBag.Title = "Login";
+   
+   
+
+}
+
+<style>
+
+    body {
+        background-image: url('https://cdn.dribbble.com/users/1583884/screenshots/17868785/media/72ca2231815dd77e808e794d031e0ede.jpg');
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+    }
+
+    .container {
+        background-color: transparent;
+        padding: 20px;
+        border-radius: 10px;
+    }
+
+        .container form {
+            background-color: transparent;
+            border-radius: 10px;
+        }
+
+
+    .btn:hover {
+        transform: scale(1.05);
+        transition: transform 0.2s;
+    }
+
+
+    .form-control {
+        background-color: rgba(0, 0, 0, 0.2);
+        border: none;
+        color: white;
+    }
+
+
+    .btn-primary {
+        background-color: blue;
+        color: white;
+        border: none;
+    }
+</style>
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <h2 class="text-center mb-4">Login</h2>
+
+            @if (!string.IsNullOrEmpty(ViewBag.ErrorMessage))
+            {
+                <div class="alert alert-danger">
+                    @ViewBag.ErrorMessage
+                </div>
+            }
+
+            @model LoginModel
+
+            @using (Html.BeginForm())
+            {
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Username, "Username:")
+                    @Html.TextBoxFor(m => m.Username, new { @class = "form-control" })
+                    <span asp-validation-for="Username" class="test-danger"></span>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Password, "Password:")
+                    @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+                    <span asp-validation-for="Password" class="test-danger"></span>
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary btn-block">Login</button>
+                </div>
+            }
+
+            <div class="text-center">
+                <p>Don't have an account?</p>
+                <a asp-controller="Account" asp-action="Create" class="btn btn-primary">Create User</a>
+
+            </div>
+        </div>
+    </div>
+</div>

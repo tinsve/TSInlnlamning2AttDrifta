@@ -1,0 +1,114 @@
+﻿@model CodeMonkeyBank.Models.AccountModel
+
+@{
+    ViewData["Title"] = "Deposit";
+}
+
+<style>
+    body {
+        background-image: url('https://wallpapers.com/images/featured/01u4rvx6v91p4td9.jpg');
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        color: rgba(0, 0, 0, 0.7);
+        margin: 0;
+        padding: 0;
+    }
+
+    .header {
+        background-color: transparent;
+        padding: 20px;
+        border-bottom: none;
+        text-align: center;
+        color: rgba(0, 0, 0, 0.7);
+    }
+
+    .container {
+        background-color: transparent;
+        padding: 20px;
+        border-radius: 10px;
+        margin-top: 20px;
+        color: rgba(0, 0, 0, 0.7);
+    }
+
+    .form-group {
+        margin-bottom: 20px;
+    }
+
+    label {
+        font-weight: bold;
+        color: rgba(0, 0, 0, 0.7);
+    }
+
+    .form-control {
+        background-color: rgba(255, 255, 255, 0.1);
+        border: 1px solid #ddd;
+        padding: 5px;
+        border-radius: 5px;
+        color: rgba(0, 0, 0, 0.7);
+        width: 60%;
+    }
+
+    .btn-primary {
+        background-color: #007BFF;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+        .btn-primary:focus,
+        .btn-primary:active,
+        .btn-primary:hover {
+            outline: none;
+            box-shadow: none;
+        }
+</style>
+
+
+
+
+
+<div class="header">
+    <h1 style="margin-bottom: 0; color: rgba(0, 0, 0, 0.7);">Deposit</h1>
+</div>
+
+<div class="container text-center">
+    <hr style="border: none; background-color: transparent;">
+
+    <form asp-action="Deposit">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="form-group">
+          
+        </div>
+
+        <div class="form-group">
+            @* <label><h3>@Model.Balance</h3></label> *@
+            <label asp-for="Balance" class="control-label">Balance:</label>
+            <input asp-for="Balance" class="form-control mx-auto" readonly />
+            <span asp-validation-for="Balance" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label for="amount">Amount to Deposit:</label>
+            <input type="number" id="amount" name="amount" class="form-control mx-auto" />
+            <span asp-validation-for="Balance" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <input type="submit" asp-action="Deposit" asp-controller="Account" class="btn btn-primary" value="Deposit" />
+        </div>
+    </form>
+
+    <div>
+        <a asp-action="Index">Back to account</a>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
+
