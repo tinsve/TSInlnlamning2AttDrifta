@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+ name: codemonkeybank-webapp
+ namespace: cmb
+spec:
+ replicas: 1
+ selector:
+   matchLabels:
+     app: codemonkeybank-webapp
+ template:
+   metadata:
+     labels:
+       app: codemonkeybank-webapp
+   spec:
+     containers:
+     - name: codemonkeybank-container
+       image: ghcr.io/tinsve/codemonkeybank:a402b597fed6912c94750db1a87409ee5aeb9d0c
+       ports:
+       - containerPort: 80
+       envFrom: 
+       - configMapRef:
+           name: app-config
+           
