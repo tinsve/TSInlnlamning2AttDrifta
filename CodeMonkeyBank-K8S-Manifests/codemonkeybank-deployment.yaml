@@ -15,7 +15,7 @@ spec:
    spec:
      containers:
      - name: codemonkeybank-container
-       image: ghcr.io/tinsve/codemonkeybank:dd9e3c94992703b593e760672c0021cdfc66406c
+       image: ghcr.io/tinsve/codemonkeybank:5c8fa38c3289a4b1e3d4ff8898b8ebc1551ea7df
        ports:
        - containerPort: 80
        envFrom: 
